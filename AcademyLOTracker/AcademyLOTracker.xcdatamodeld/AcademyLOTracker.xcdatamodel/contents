@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="LearningObjective" representedClassName="LearningObjective" syncable="YES" codeGenerationType="class">
+        <attribute name="code" optional="YES" attributeType="String"/>
+        <attribute name="goalShortName" optional="YES" attributeType="String"/>
+        <attribute name="keywords" optional="YES" attributeType="String"/>
+        <attribute name="learningProgress" optional="YES" attributeType="String"/>
+        <attribute name="objective" optional="YES" attributeType="String"/>
+        <relationship name="role" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Role" inverseName="learningObjective" inverseEntity="Role"/>
+    </entity>
+    <entity name="Role" representedClassName="Role" syncable="YES" codeGenerationType="class">
+        <attribute name="finishedLO" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="totalLO" optional="YES" attributeType="String"/>
+        <relationship name="learningObjective" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LearningObjective" inverseName="role" inverseEntity="LearningObjective"/>
+    </entity>
+    <elements>
+        <element name="Role" positionX="-17377.74609375" positionY="-13498.99609375" width="128" height="103"/>
+        <element name="LearningObjective" positionX="-17616.8984375" positionY="-13496.828125" width="128" height="133"/>
+    </elements>
 </model>

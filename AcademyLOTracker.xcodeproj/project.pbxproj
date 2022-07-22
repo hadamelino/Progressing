@@ -9,14 +9,15 @@
 /* Begin PBXBuildFile section */
 		C43A42B9288A87F500009589 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42B8288A87F500009589 /* AppDelegate.swift */; };
 		C43A42BB288A87F500009589 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42BA288A87F500009589 /* SceneDelegate.swift */; };
-		C43A42BD288A87F500009589 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42BC288A87F500009589 /* ViewController.swift */; };
-		C43A42C0288A87F500009589 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C43A42BE288A87F500009589 /* Main.storyboard */; };
+		C43A42BD288A87F500009589 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42BC288A87F500009589 /* ProgressViewController.swift */; };
 		C43A42C3288A87F500009589 /* AcademyLOTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C43A42C1288A87F500009589 /* AcademyLOTracker.xcdatamodeld */; };
 		C43A42C5288A87F700009589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43A42C4288A87F700009589 /* Assets.xcassets */; };
 		C43A42C8288A87F700009589 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C43A42C6288A87F700009589 /* LaunchScreen.storyboard */; };
 		C43A42D3288A87F700009589 /* AcademyLOTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42D2288A87F700009589 /* AcademyLOTrackerTests.swift */; };
 		C43A42DD288A87F700009589 /* AcademyLOTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42DC288A87F700009589 /* AcademyLOTrackerUITests.swift */; };
 		C43A42DF288A87F700009589 /* AcademyLOTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42DE288A87F700009589 /* AcademyLOTrackerUITestsLaunchTests.swift */; };
+		C43A42EF288A966A00009589 /* ProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42EE288A966A00009589 /* ProgressViewModel.swift */; };
+		CC30531FCA4E443026964F41 /* Pods_AcademyLOTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C80A6B82AB074DA6616E18 /* Pods_AcademyLOTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38C80A6B82AB074DA6616E18 /* Pods_AcademyLOTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AcademyLOTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76DEB1171621BF132724AE0E /* Pods-AcademyLOTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AcademyLOTracker.debug.xcconfig"; path = "Target Support Files/Pods-AcademyLOTracker/Pods-AcademyLOTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C43A42B5288A87F500009589 /* AcademyLOTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcademyLOTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43A42B8288A87F500009589 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C43A42BA288A87F500009589 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C43A42BC288A87F500009589 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C43A42BF288A87F500009589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C43A42BC288A87F500009589 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		C43A42C2288A87F500009589 /* AcademyLOTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AcademyLOTracker.xcdatamodel; sourceTree = "<group>"; };
 		C43A42C4288A87F700009589 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C43A42C7288A87F700009589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,8 @@
 		C43A42D8288A87F700009589 /* AcademyLOTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AcademyLOTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43A42DC288A87F700009589 /* AcademyLOTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademyLOTrackerUITests.swift; sourceTree = "<group>"; };
 		C43A42DE288A87F700009589 /* AcademyLOTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademyLOTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C43A42EE288A966A00009589 /* ProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewModel.swift; sourceTree = "<group>"; };
+		CD5A93A6D5CB40A51D621678 /* Pods-AcademyLOTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AcademyLOTracker.release.xcconfig"; path = "Target Support Files/Pods-AcademyLOTracker/Pods-AcademyLOTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC30531FCA4E443026964F41 /* Pods_AcademyLOTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31AF0B6CC422C28FB184EA3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38C80A6B82AB074DA6616E18 /* Pods_AcademyLOTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9BB88A8FC24854B0C0D3CB89 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				76DEB1171621BF132724AE0E /* Pods-AcademyLOTracker.debug.xcconfig */,
+				CD5A93A6D5CB40A51D621678 /* Pods-AcademyLOTracker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C43A42AC288A87F500009589 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +107,8 @@
 				C43A42D1288A87F700009589 /* AcademyLOTrackerTests */,
 				C43A42DB288A87F700009589 /* AcademyLOTrackerUITests */,
 				C43A42B6288A87F500009589 /* Products */,
+				9BB88A8FC24854B0C0D3CB89 /* Pods */,
+				31AF0B6CC422C28FB184EA3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +125,10 @@
 		C43A42B7288A87F500009589 /* AcademyLOTracker */ = {
 			isa = PBXGroup;
 			children = (
+				C43A42F0288A971100009589 /* Model */,
+				C43A42EB288A907C00009589 /* Progress */,
 				C43A42B8288A87F500009589 /* AppDelegate.swift */,
 				C43A42BA288A87F500009589 /* SceneDelegate.swift */,
-				C43A42BC288A87F500009589 /* ViewController.swift */,
-				C43A42BE288A87F500009589 /* Main.storyboard */,
 				C43A42C4288A87F700009589 /* Assets.xcassets */,
 				C43A42C6288A87F700009589 /* LaunchScreen.storyboard */,
 				C43A42C9288A87F700009589 /* Info.plist */,
@@ -130,6 +154,38 @@
 			path = AcademyLOTrackerUITests;
 			sourceTree = "<group>";
 		};
+		C43A42EB288A907C00009589 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				C43A42ED288A90B800009589 /* View */,
+				C43A42EC288A908400009589 /* ViewModel */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		C43A42EC288A908400009589 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C43A42EE288A966A00009589 /* ProgressViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C43A42ED288A90B800009589 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C43A42BC288A87F500009589 /* ProgressViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C43A42F0288A971100009589 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +193,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C43A42E2288A87F700009589 /* Build configuration list for PBXNativeTarget "AcademyLOTracker" */;
 			buildPhases = (
+				C4B8AE9B58AEBE8FB4AF3332 /* [CP] Check Pods Manifest.lock */,
 				C43A42B1288A87F500009589 /* Sources */,
 				C43A42B2288A87F500009589 /* Frameworks */,
 				C43A42B3288A87F500009589 /* Resources */,
+				632961A0580D11595BAFB410 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,7 +294,6 @@
 			files = (
 				C43A42C8288A87F700009589 /* LaunchScreen.storyboard in Resources */,
 				C43A42C5288A87F700009589 /* Assets.xcassets in Resources */,
-				C43A42C0288A87F500009589 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,14 +313,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		632961A0580D11595BAFB410 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AcademyLOTracker/Pods-AcademyLOTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AcademyLOTracker/Pods-AcademyLOTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AcademyLOTracker/Pods-AcademyLOTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4B8AE9B58AEBE8FB4AF3332 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AcademyLOTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C43A42B1288A87F500009589 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C43A42C3288A87F500009589 /* AcademyLOTracker.xcdatamodeld in Sources */,
-				C43A42BD288A87F500009589 /* ViewController.swift in Sources */,
+				C43A42BD288A87F500009589 /* ProgressViewController.swift in Sources */,
 				C43A42B9288A87F500009589 /* AppDelegate.swift in Sources */,
+				C43A42EF288A966A00009589 /* ProgressViewModel.swift in Sources */,
 				C43A42BB288A87F500009589 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,14 +401,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C43A42BE288A87F500009589 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C43A42BF288A87F500009589 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C43A42C6288A87F700009589 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -436,6 +528,7 @@
 		};
 		C43A42E3288A87F700009589 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76DEB1171621BF132724AE0E /* Pods-AcademyLOTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -446,7 +539,6 @@
 				INFOPLIST_FILE = AcademyLOTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -464,6 +556,7 @@
 		};
 		C43A42E4288A87F700009589 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD5A93A6D5CB40A51D621678 /* Pods-AcademyLOTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -474,7 +567,6 @@
 				INFOPLIST_FILE = AcademyLOTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
