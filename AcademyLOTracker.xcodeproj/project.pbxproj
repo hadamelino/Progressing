@@ -17,6 +17,17 @@
 		C43A42DD288A87F700009589 /* AcademyLOTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42DC288A87F700009589 /* AcademyLOTrackerUITests.swift */; };
 		C43A42DF288A87F700009589 /* AcademyLOTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42DE288A87F700009589 /* AcademyLOTrackerUITestsLaunchTests.swift */; };
 		C43A42EF288A966A00009589 /* ProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42EE288A966A00009589 /* ProgressViewModel.swift */; };
+		C43A42F3288A9AE300009589 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42F2288A9AE300009589 /* API.swift */; };
+		C43A42F8288AA1CC00009589 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42F7288AA1CC00009589 /* Constant.swift */; };
+		C43A42FA288ACA1700009589 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42F9288ACA1700009589 /* ModelManager.swift */; };
+		C43A42FE288AFD2300009589 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42FD288AFD2300009589 /* APIClient.swift */; };
+		C43A4300288BC24400009589 /* PathProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A42FF288BC24400009589 /* PathProgress.swift */; };
+		C43A4302288BC26400009589 /* LearningObjective.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4301288BC26400009589 /* LearningObjective.swift */; };
+		C43A4304288BC38400009589 /* PageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4303288BC38400009589 /* PageProperties.swift */; };
+		C43A4306288BC42C00009589 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4305288BC42C00009589 /* Property.swift */; };
+		C43A4308288C01DC00009589 /* iOSProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4307288C01DC00009589 /* iOSProgressTableViewCell.swift */; };
+		C43A4325288F7F9A00009589 /* ProgressDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4324288F7F9A00009589 /* ProgressDataSource.swift */; };
+		C43A4327288F828200009589 /* HighPriorityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4326288F828200009589 /* HighPriorityTableViewCell.swift */; };
 		CC30531FCA4E443026964F41 /* Pods_AcademyLOTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C80A6B82AB074DA6616E18 /* Pods_AcademyLOTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +65,17 @@
 		C43A42DC288A87F700009589 /* AcademyLOTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademyLOTrackerUITests.swift; sourceTree = "<group>"; };
 		C43A42DE288A87F700009589 /* AcademyLOTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademyLOTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C43A42EE288A966A00009589 /* ProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewModel.swift; sourceTree = "<group>"; };
+		C43A42F2288A9AE300009589 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C43A42F7288AA1CC00009589 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		C43A42F9288ACA1700009589 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		C43A42FD288AFD2300009589 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		C43A42FF288BC24400009589 /* PathProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathProgress.swift; sourceTree = "<group>"; };
+		C43A4301288BC26400009589 /* LearningObjective.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningObjective.swift; sourceTree = "<group>"; };
+		C43A4303288BC38400009589 /* PageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProperties.swift; sourceTree = "<group>"; };
+		C43A4305288BC42C00009589 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		C43A4307288C01DC00009589 /* iOSProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSProgressTableViewCell.swift; sourceTree = "<group>"; };
+		C43A4324288F7F9A00009589 /* ProgressDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDataSource.swift; sourceTree = "<group>"; };
+		C43A4326288F828200009589 /* HighPriorityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighPriorityTableViewCell.swift; sourceTree = "<group>"; };
 		CD5A93A6D5CB40A51D621678 /* Pods-AcademyLOTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AcademyLOTracker.release.xcconfig"; path = "Target Support Files/Pods-AcademyLOTracker/Pods-AcademyLOTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +147,8 @@
 		C43A42B7288A87F500009589 /* AcademyLOTracker */ = {
 			isa = PBXGroup;
 			children = (
+				C43A42F6288AA1BF00009589 /* Constant */,
+				C43A42F1288A9AD600009589 /* API */,
 				C43A42F0288A971100009589 /* Model */,
 				C43A42EB288A907C00009589 /* Progress */,
 				C43A42B8288A87F500009589 /* AppDelegate.swift */,
@@ -159,6 +183,7 @@
 			children = (
 				C43A42ED288A90B800009589 /* View */,
 				C43A42EC288A908400009589 /* ViewModel */,
+				C43A42BC288A87F500009589 /* ProgressViewController.swift */,
 			);
 			path = Progress;
 			sourceTree = "<group>";
@@ -167,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				C43A42EE288A966A00009589 /* ProgressViewModel.swift */,
+				C43A4324288F7F9A00009589 /* ProgressDataSource.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -174,7 +200,7 @@
 		C43A42ED288A90B800009589 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C43A42BC288A87F500009589 /* ProgressViewController.swift */,
+				C43A4309288E58F600009589 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,8 +208,39 @@
 		C43A42F0288A971100009589 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C43A42F9288ACA1700009589 /* ModelManager.swift */,
+				C43A42FF288BC24400009589 /* PathProgress.swift */,
+				C43A4301288BC26400009589 /* LearningObjective.swift */,
+				C43A4303288BC38400009589 /* PageProperties.swift */,
+				C43A4305288BC42C00009589 /* Property.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C43A42F1288A9AD600009589 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C43A42F2288A9AE300009589 /* API.swift */,
+				C43A42FD288AFD2300009589 /* APIClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		C43A42F6288AA1BF00009589 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				C43A42F7288AA1CC00009589 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		C43A4309288E58F600009589 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C43A4307288C01DC00009589 /* iOSProgressTableViewCell.swift */,
+				C43A4326288F828200009589 /* HighPriorityTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,10 +418,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				C43A42C3288A87F500009589 /* AcademyLOTracker.xcdatamodeld in Sources */,
+				C43A4304288BC38400009589 /* PageProperties.swift in Sources */,
+				C43A4325288F7F9A00009589 /* ProgressDataSource.swift in Sources */,
+				C43A4308288C01DC00009589 /* iOSProgressTableViewCell.swift in Sources */,
 				C43A42BD288A87F500009589 /* ProgressViewController.swift in Sources */,
 				C43A42B9288A87F500009589 /* AppDelegate.swift in Sources */,
+				C43A42F3288A9AE300009589 /* API.swift in Sources */,
+				C43A42FE288AFD2300009589 /* APIClient.swift in Sources */,
+				C43A4302288BC26400009589 /* LearningObjective.swift in Sources */,
 				C43A42EF288A966A00009589 /* ProgressViewModel.swift in Sources */,
+				C43A4306288BC42C00009589 /* Property.swift in Sources */,
+				C43A4300288BC24400009589 /* PathProgress.swift in Sources */,
+				C43A42F8288AA1CC00009589 /* Constant.swift in Sources */,
+				C43A42FA288ACA1700009589 /* ModelManager.swift in Sources */,
 				C43A42BB288A87F500009589 /* SceneDelegate.swift in Sources */,
+				C43A4327288F828200009589 /* HighPriorityTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
