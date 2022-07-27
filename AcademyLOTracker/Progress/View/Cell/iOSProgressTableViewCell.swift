@@ -70,10 +70,7 @@ class iOSProgressTableViewCell: UITableViewCell {
         container.layer.shadowColor = UIColor(named: "shadow")?.cgColor
         container.layer.shadowRadius = 4
         container.layer.shadowOpacity = 1
-        
-        title.text = "title"
-        subTitle.text = "subtitle"
-        
+
         subTitle.font = UIFont.italicSystemFont(ofSize: 14)
         subTitle.textColor = UIColor(named: "subtitle")
         

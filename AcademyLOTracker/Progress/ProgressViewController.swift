@@ -30,12 +30,6 @@ class ProgressViewController: UIViewController {
         //viewModel.fetch()
     }
     
-    let client = API.Client()
-    var pathProgressPublishSubject = PublishSubject<[PathProgress]>()
-    var pathProgress = [PathProgress]()
-    var highPriority = [LearningObjective]()
-    var sections = [ProgressTableViewSection]()
-    
     private func bind() {
 
         viewModel.sections.bind(to: tableView.rx.items(dataSource: ProgressDataSource.dataSource())).disposed(by: bag)

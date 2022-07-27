@@ -15,11 +15,25 @@ class ListOfLOViewController: UIViewController {
     
     lazy var tableView = UITableView()
     lazy var searchBar = UISearchBar()
+    
+    var viewModel = ListOfLOViewModel()
+    var bag = DisposeBag()
+    
     var pathName: String = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        bind()
+    }
+    
+    private func bind() {
+        let databaseID = viewModel.getDatabaseID(from: pathName)
+        viewModel.fetchLO(for: databaseID).bind(to: tableView.rx.items(cellIdentifier: LearningTableViewCell.identifier, cellType: LearningTableViewCell.self)) { index, model, cell in
+            let cell = LearningTableViewCell()
+            cell.learningObjective = model
+        }.disposed(by: bag)
+        
     }
     
     
@@ -43,7 +57,8 @@ class ListOfLOViewController: UIViewController {
             make.right.equalTo(searchBar)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-        
+        tableView.separatorStyle = .none
+        tableView.register(LearningTableViewCell.self, forCellReuseIdentifier: LearningTableViewCell.identifier)
         searchBar.placeholder = "Code, Objective, Keywords…"
     }
 
