@@ -30,9 +30,13 @@ class ListOfLOViewController: UIViewController {
     private func bind() {
         let databaseID = viewModel.getDatabaseID(from: pathName)
         viewModel.fetchLO(for: databaseID).bind(to: tableView.rx.items(cellIdentifier: LearningTableViewCell.identifier, cellType: LearningTableViewCell.self)) { index, model, cell in
-            let cell = LearningTableViewCell()
             cell.learningObjective = model
         }.disposed(by: bag)
+        
+        tableView.rx.modelSelected(LearningObjective.self).subscribe { learning in
+            print(learning)
+        }.disposed(by: bag)
+
         
     }
     

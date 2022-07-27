@@ -33,33 +33,30 @@ class LearningTableViewCell: UITableViewCell {
         container.addSubview(disclosure)
         
         container.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(5)
             make.top.equalToSuperview().offset(5)
-            make.right.equalToSuperview().offset(-10)
+            make.right.equalToSuperview().offset(-5)
             make.bottom.equalToSuperview().offset(-5)
-            make.height.equalTo(60)
+            make.height.equalTo(53)
         }
         
         title.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(10)
-            make.top.equalToSuperview().offset(5)
+            make.top.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview().offset(-5)
         }
-        print(learningObjective)
 
-//
-//        objective.snp.makeConstraints { make in
-//            make.left.equalTo(title)
-//            make.top.equalTo(title.snp.bottom).offset(5)
-//            make.right.equalTo(title)
-//            make.bottom.equalToSuperview().offset(-5)
-//        }
+        objective.snp.makeConstraints { make in
+            make.left.equalTo(title)
+            make.top.equalTo(title.snp.bottom).offset(5)
+            make.right.equalTo(disclosure.snp.left).offset(-10)
+            make.bottom.equalToSuperview().offset(-10)
+        }
         
-//        disclosure.snp.makeConstraints { make in
-//            make.centerY.equalToSuperview()
-//            make.right.equalToSuperview().offset(-10)
-//        }
+        disclosure.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-20)
+        }
         
         configureCell()
         
