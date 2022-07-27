@@ -20,9 +20,8 @@ class ProgressViewModel {
     func fetch() {
         var section: [ProgressTableViewSection] = []
         let pathData = client.request(endpoint: .queryDatabase(databaseID: databaseID.pathProgress), method: .post, expecting: ModelManager.Handler.Path.self)
-        let learningData = client.request(endpoint: .queryDatabase(databaseID: databaseID.professionalSkills), method: .post, expecting: ModelManager.Handler.Learning.self)
-
-        Observable.zip(pathData, learningData) { (path, learning) in
+        let highPriorityLO = client.request(endpoint: .queryDatabase(databaseID: databaseID.highPriorityLO), method: .post, expecting: ModelManager.Handler.Learning.self)
+        Observable.zip(pathData, highPriorityLO) { (path, learning) in
             return (path.results, learning.results)
         }.subscribe { (path, learning) in
             let pathSection = path.map { path -> ProgressTableViewItem in
@@ -41,21 +40,7 @@ class ProgressViewModel {
         }.disposed(by: bag)
     }
     
-    func fetchHighPriorityLO() {
- 
-    }
-    
-    
-    func fetchLearningObjectives() {
-        
-    }
-    
-    func createDataSource() {
-        
-    }
-    
-    
-    func updateLearningProgress() {
+    func deleteHighPriorityLO() {
         
     }
     

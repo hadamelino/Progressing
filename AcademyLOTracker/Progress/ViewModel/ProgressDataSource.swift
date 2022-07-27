@@ -19,6 +19,7 @@ struct ProgressDataSource {
                 cell.pathProgress = pathProgress
                 return cell
             case .highPriorityItem(high: let learningObjective):
+                print(learningObjective)
                 let cell = HighPriorityTableViewCell()
                 cell.highPriority = learningObjective
                 return cell

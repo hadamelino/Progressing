@@ -32,6 +32,7 @@
 		C43A432D28910A1300009589 /* ListOfLOViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A432C28910A1300009589 /* ListOfLOViewModel.swift */; };
 		C43A433128910C9500009589 /* LearningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A433028910C9500009589 /* LearningTableViewCell.swift */; };
 		C43A4334289124AF00009589 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4333289124AF00009589 /* DetailViewController.swift */; };
+		C4EDA81D28916B9C00DADCF7 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EDA81C28916B9C00DADCF7 /* DetailViewModel.swift */; };
 		CC30531FCA4E443026964F41 /* Pods_AcademyLOTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C80A6B82AB074DA6616E18 /* Pods_AcademyLOTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		C43A432C28910A1300009589 /* ListOfLOViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfLOViewModel.swift; sourceTree = "<group>"; };
 		C43A433028910C9500009589 /* LearningTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningTableViewCell.swift; sourceTree = "<group>"; };
 		C43A4333289124AF00009589 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C4EDA81C28916B9C00DADCF7 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		CD5A93A6D5CB40A51D621678 /* Pods-AcademyLOTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AcademyLOTracker.release.xcconfig"; path = "Target Support Files/Pods-AcademyLOTracker/Pods-AcademyLOTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,9 +284,26 @@
 		C43A43322891249300009589 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				C43A4333289124AF00009589 /* DetailViewController.swift */,
+				C4EDA81F28916BA900DADCF7 /* View */,
+				C4EDA81E28916BA000DADCF7 /* ViewModel */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		C4EDA81E28916BA000DADCF7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C4EDA81C28916B9C00DADCF7 /* DetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C4EDA81F28916BA900DADCF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C43A4333289124AF00009589 /* DetailViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,6 +496,7 @@
 				C43A4300288BC24400009589 /* PathProgress.swift in Sources */,
 				C43A432D28910A1300009589 /* ListOfLOViewModel.swift in Sources */,
 				C43A42F8288AA1CC00009589 /* Constant.swift in Sources */,
+				C4EDA81D28916B9C00DADCF7 /* DetailViewModel.swift in Sources */,
 				C43A42FA288ACA1700009589 /* ModelManager.swift in Sources */,
 				C43A42BB288A87F500009589 /* SceneDelegate.swift in Sources */,
 				C43A4327288F828200009589 /* HighPriorityTableViewCell.swift in Sources */,

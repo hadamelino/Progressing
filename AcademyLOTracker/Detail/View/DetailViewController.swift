@@ -82,6 +82,7 @@ class DetailViewController: UIViewController {
                 make.bottom.equalToSuperview().offset(-20)
                 make.right.equalToSuperview().offset(-20)
             }
+            keywordsValue.numberOfLines = 0
             keywordsValue.font = UIFont.italicSystemFont(ofSize: 14)
             
             copyLabelContainer.snp.makeConstraints { make in
@@ -125,7 +126,12 @@ class DetailViewController: UIViewController {
         copySymbol.tintColor = UIColor(named: "uicolor")
         addButton.setTitle("Add to High Priority LO", for: .normal)
         addButton.backgroundColor = UIColor(named: "uicolor")
+        addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
     
+    }
+    
+    @objc func addButtonPressed() {
+        
     }
     
     private func makeShadow(view: UIView) {

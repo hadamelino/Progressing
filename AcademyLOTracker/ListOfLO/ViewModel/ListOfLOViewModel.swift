@@ -21,7 +21,7 @@ class ListOfLOViewModel {
     
     func getDatabaseID(from role: String) -> String {
         switch role {
-        case "App Business & Marketing":
+        case "App Business and Marketing":
             return databaseID.appAndBusiness
         case "Design":
             return databaseID.design
