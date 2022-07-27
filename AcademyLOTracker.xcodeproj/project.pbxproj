@@ -28,6 +28,7 @@
 		C43A4308288C01DC00009589 /* iOSProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4307288C01DC00009589 /* iOSProgressTableViewCell.swift */; };
 		C43A4325288F7F9A00009589 /* ProgressDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4324288F7F9A00009589 /* ProgressDataSource.swift */; };
 		C43A4327288F828200009589 /* HighPriorityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4326288F828200009589 /* HighPriorityTableViewCell.swift */; };
+		C43A432A2890F28400009589 /* ListOfLOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A43292890F28400009589 /* ListOfLOViewController.swift */; };
 		CC30531FCA4E443026964F41 /* Pods_AcademyLOTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C80A6B82AB074DA6616E18 /* Pods_AcademyLOTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		C43A4307288C01DC00009589 /* iOSProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSProgressTableViewCell.swift; sourceTree = "<group>"; };
 		C43A4324288F7F9A00009589 /* ProgressDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDataSource.swift; sourceTree = "<group>"; };
 		C43A4326288F828200009589 /* HighPriorityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighPriorityTableViewCell.swift; sourceTree = "<group>"; };
+		C43A43292890F28400009589 /* ListOfLOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfLOViewController.swift; sourceTree = "<group>"; };
 		CD5A93A6D5CB40A51D621678 /* Pods-AcademyLOTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AcademyLOTracker.release.xcconfig"; path = "Target Support Files/Pods-AcademyLOTracker/Pods-AcademyLOTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 				C43A42F1288A9AD600009589 /* API */,
 				C43A42F0288A971100009589 /* Model */,
 				C43A42EB288A907C00009589 /* Progress */,
+				C43A43282890F24600009589 /* ListOfLO */,
 				C43A42B8288A87F500009589 /* AppDelegate.swift */,
 				C43A42BA288A87F500009589 /* SceneDelegate.swift */,
 				C43A42C4288A87F700009589 /* Assets.xcassets */,
@@ -182,8 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				C43A42ED288A90B800009589 /* View */,
-				C43A42EC288A908400009589 /* ViewModel */,
 				C43A42BC288A87F500009589 /* ProgressViewController.swift */,
+				C43A42EC288A908400009589 /* ViewModel */,
 			);
 			path = Progress;
 			sourceTree = "<group>";
@@ -241,6 +244,14 @@
 				C43A4326288F828200009589 /* HighPriorityTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C43A43282890F24600009589 /* ListOfLO */ = {
+			isa = PBXGroup;
+			children = (
+				C43A43292890F28400009589 /* ListOfLOViewController.swift */,
+			);
+			path = ListOfLO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +444,7 @@
 				C43A42FA288ACA1700009589 /* ModelManager.swift in Sources */,
 				C43A42BB288A87F500009589 /* SceneDelegate.swift in Sources */,
 				C43A4327288F828200009589 /* HighPriorityTableViewCell.swift in Sources */,
+				C43A432A2890F28400009589 /* ListOfLOViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

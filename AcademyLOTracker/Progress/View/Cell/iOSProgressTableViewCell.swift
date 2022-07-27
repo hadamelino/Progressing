@@ -33,9 +33,9 @@ class iOSProgressTableViewCell: UITableViewCell {
         container.addSubview(disclosure)
         
         container.snp.makeConstraints { make in
-            make.left.equalTo(contentView).offset(10)
+            make.left.equalTo(contentView).offset(20)
             make.top.equalTo(contentView).offset(5)
-            make.right.equalTo(contentView).offset(-10)
+            make.right.equalTo(contentView).offset(-20)
             make.bottom.equalTo(contentView).offset(-5)
         }
         
@@ -63,7 +63,6 @@ class iOSProgressTableViewCell: UITableViewCell {
     func configureCell() {
         disclosure.image = UIImage(systemName: "chevron.right")
         tintColor = UIColor(named: "uicolor")
-        contentView.backgroundColor = .red
         container.backgroundColor = .white
         container.layer.cornerRadius = 10
       
@@ -91,10 +90,5 @@ class iOSProgressTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-//        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0))
-    }
 
 }

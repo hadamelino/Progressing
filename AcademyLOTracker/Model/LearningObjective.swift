@@ -20,7 +20,7 @@ struct LearningObjective: Codable {
         code = try pageProperties.decode(Property.Types.Title.self, forKey: .code)
         objective = try pageProperties.decode(Property.Types.RichText.self, forKey: .objective)
         goal = try pageProperties.decode(Property.Types.Select.self, forKey: .goalShortName)
-        learningProgress = ""
+        learningProgress = "Not Started"
         electiveKeywords = try pageProperties.decode(Property.Types.RichText.self, forKey: .electiveKeywords)
     }
 }

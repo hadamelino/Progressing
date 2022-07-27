@@ -25,6 +25,11 @@ class ProgressViewController: UIViewController {
         setupUI()
         bind()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //viewModel.fetch()
+    }
+    
     let client = API.Client()
     var pathProgressPublishSubject = PublishSubject<[PathProgress]>()
     var pathProgress = [PathProgress]()
@@ -32,9 +37,22 @@ class ProgressViewController: UIViewController {
     var sections = [ProgressTableViewSection]()
     
     private func bind() {
-        
-        viewModel.fetchPathProgress()
+
         viewModel.sections.bind(to: tableView.rx.items(dataSource: ProgressDataSource.dataSource())).disposed(by: bag)
+        viewModel.fetch()
+        
+        tableView.rx.modelSelected(ProgressTableViewItem.self).subscribe { item in
+            switch item.element {
+            case .iosPathProgressItem(path: let path):
+                let nextVC = ListOfLOViewController()
+                nextVC.pathName = path.name.title ?? "Role"
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            case .highPriorityItem(high: let high):
+                print("high")
+            case .none:
+                return
+            }
+        }.disposed(by: bag)
 
     }
     
@@ -56,36 +74,31 @@ class ProgressViewController: UIViewController {
         tableView.rx.setDelegate(self).disposed(by: bag)
 
         tableView.snp.makeConstraints { (make) in
-            make.left.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.right.equalTo(view.safeAreaLayoutGuide).offset(-20)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
+            make.left.equalTo(view.safeAreaLayoutGuide)
+            make.right.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         tableView.register(iOSProgressTableViewCell.self, forCellReuseIdentifier: iOSProgressTableViewCell.identifier)
     }
 }
 
 extension ProgressViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            print("here")
-            let myLabel = UILabel()
-            myLabel.frame = CGRect(x: 5, y: 3, width: 320, height: 20)
-            myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-            myLabel.text = "Academy Progress"
-            let headerView = UIView()
-            headerView.addSubview(myLabel)
 
-            return headerView
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let myLabel = UILabel()
+        myLabel.frame = CGRect(x: 10, y: 3, width: 320, height: 20)
+        myLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        let headerView = UIView()
+        headerView.addSubview(myLabel)
+
+        if section == 0 {
+            myLabel.text = "Academy Progress"
         }
         else {
-            return UIView()
+            myLabel.text = "High Priority LO"
         }
-            
+        return headerView
     }
 }
 

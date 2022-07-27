@@ -21,31 +21,34 @@ extension API {
         func request<T: Codable>(
             endpoint: Types.Endpoint,
             method: Types.Method,
-            expecting: T.Type,
-            completion: @escaping (Result<T, Error>) -> Void
-        ) {
-            var urlRequest = URLRequest(url: endpoint.url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
-            urlRequest.httpMethod = method.rawValue
-            urlRequest.allHTTPHeaderFields = self.headers
-            
-            let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-                guard let data = data else {
-                    if let error = error {
-                        completion(.failure(error))
-                    } else {
-                        completion(.failure(Types.CustomError.invalidData))
-                    }
-                    return
-                }
+            expecting: T.Type
+        ) -> Observable<T> {
+            return Observable.create { observer in
                 
-                do {
-                    let result = try JSONDecoder().decode(expecting, from: data)
-                    completion(.success(result))
-                } catch {
-                    completion(.failure(error))
+                var urlRequest = URLRequest(url: endpoint.url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+                urlRequest.httpMethod = method.rawValue
+                urlRequest.allHTTPHeaderFields = self.headers
+                
+                let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+                    guard let data = data else {
+                        if let error = error {
+                            observer.onError(error)
+                        }
+                        return
+                    }
+                    
+                    do {
+                        let result = try JSONDecoder().decode(expecting, from: data)
+                        observer.onNext(result)
+                    } catch {
+                        observer.onError(error)
+                    }
                 }
+                task.resume()
+                
+                return Disposables.create{ }
             }
-            task.resume()
+            
         }
     }
     
