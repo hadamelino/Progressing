@@ -39,6 +39,7 @@ extension API {
                     
                     do {
                         let result = try JSONDecoder().decode(expecting, from: data)
+                    
                         observer.onNext(result)
                     } catch {
                         observer.onError(error)

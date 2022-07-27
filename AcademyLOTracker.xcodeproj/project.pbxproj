@@ -31,6 +31,7 @@
 		C43A432A2890F28400009589 /* ListOfLOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A43292890F28400009589 /* ListOfLOViewController.swift */; };
 		C43A432D28910A1300009589 /* ListOfLOViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A432C28910A1300009589 /* ListOfLOViewModel.swift */; };
 		C43A433128910C9500009589 /* LearningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A433028910C9500009589 /* LearningTableViewCell.swift */; };
+		C43A4334289124AF00009589 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4333289124AF00009589 /* DetailViewController.swift */; };
 		CC30531FCA4E443026964F41 /* Pods_AcademyLOTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C80A6B82AB074DA6616E18 /* Pods_AcademyLOTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		C43A43292890F28400009589 /* ListOfLOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfLOViewController.swift; sourceTree = "<group>"; };
 		C43A432C28910A1300009589 /* ListOfLOViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfLOViewModel.swift; sourceTree = "<group>"; };
 		C43A433028910C9500009589 /* LearningTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningTableViewCell.swift; sourceTree = "<group>"; };
+		C43A4333289124AF00009589 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CD5A93A6D5CB40A51D621678 /* Pods-AcademyLOTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AcademyLOTracker.release.xcconfig"; path = "Target Support Files/Pods-AcademyLOTracker/Pods-AcademyLOTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 				C43A42F0288A971100009589 /* Model */,
 				C43A42EB288A907C00009589 /* Progress */,
 				C43A43282890F24600009589 /* ListOfLO */,
+				C43A43322891249300009589 /* Detail */,
 				C43A42B8288A87F500009589 /* AppDelegate.swift */,
 				C43A42BA288A87F500009589 /* SceneDelegate.swift */,
 				C43A42C4288A87F700009589 /* Assets.xcassets */,
@@ -274,6 +277,14 @@
 				C43A433028910C9500009589 /* LearningTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C43A43322891249300009589 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C43A4333289124AF00009589 /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,6 +468,7 @@
 				C43A42BD288A87F500009589 /* ProgressViewController.swift in Sources */,
 				C43A42B9288A87F500009589 /* AppDelegate.swift in Sources */,
 				C43A433128910C9500009589 /* LearningTableViewCell.swift in Sources */,
+				C43A4334289124AF00009589 /* DetailViewController.swift in Sources */,
 				C43A42F3288A9AE300009589 /* API.swift in Sources */,
 				C43A42FE288AFD2300009589 /* APIClient.swift in Sources */,
 				C43A4302288BC26400009589 /* LearningObjective.swift in Sources */,

@@ -34,10 +34,10 @@ class ListOfLOViewController: UIViewController {
         }.disposed(by: bag)
         
         tableView.rx.modelSelected(LearningObjective.self).subscribe { learning in
-            print(learning)
-        }.disposed(by: bag)
-
-        
+            let nextVC = DetailViewController()
+            nextVC.learningObjective = learning.element
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }.disposed(by: bag)  
     }
     
     
@@ -47,6 +47,7 @@ class ListOfLOViewController: UIViewController {
         view.backgroundColor = UIColor(named: "bgColor")
         searchBar.backgroundImage = UIImage()
         tableView.backgroundColor = UIColor(named: "bgColor")
+        navigationController?.navigationBar.tintColor = UIColor(named: "uicolor")
         self.title = pathName
         
         searchBar.snp.makeConstraints { make in
