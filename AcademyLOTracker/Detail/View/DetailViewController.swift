@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol DetailDelegate {
+    func appendLOToSection(lo: LearningObjective)
+}
+
 class DetailViewController: UIViewController {
     
     lazy var shortGoalName = UILabel()
@@ -20,6 +24,8 @@ class DetailViewController: UIViewController {
     lazy var addButton = UIButton()
     
     var learningObjective: LearningObjective?
+    let viewModel = DetailViewModel()
+    var delegate: DetailDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +137,10 @@ class DetailViewController: UIViewController {
     }
     
     @objc func addButtonPressed() {
-        
+        guard let learningObjective = learningObjective else { return }
+        viewModel.postLearningObjective(lo: learningObjective)
+        let progressVC = navigationController?.viewControllers.first as! ProgressViewController
+        progressVC.viewModel.appendHighPriorityLO(loToAppend: learningObjective)
     }
     
     private func makeShadow(view: UIView) {

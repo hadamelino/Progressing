@@ -6,20 +6,40 @@
 //
 
 import UIKit
+import RxSwift
+
+protocol HighPriorityLODelegate: AnyObject {
+    func didTapLearning(with highPriority: LearningObjective)
+}
 
 class HighPriorityTableViewCell: UITableViewCell {
     
     lazy var title = UILabel()
-    lazy var progress = UILabel()
+    lazy var progress = UIButton()
     lazy var container = UIView()
     
+    let utilities = Utilities()
+    static var identifier = "highPriorityLOCell"
+    weak var delegate: HighPriorityLODelegate?
+    var bag = DisposeBag()
     
     var highPriority: LearningObjective? {
         didSet {
             guard let highPriority = highPriority else { return }
-            let learningProgress = highPriority.learningProgress
+            
+            Observable.just(highPriority)
+                .map { lo in
+                    let learningProgress = lo.learningProgress.richText ?? ""
+                    print(learningProgress)
+                    return self.utilities.getLearningProgressEmoji(progress: learningProgress) + " " + learningProgress
+                }.bind(to: progress.rx.title())
+                .disposed(by: bag)
+            
+//            let learningProgress = highPriority.learningProgress.richText ?? ""
             title.text = highPriority.code.title
-            progress.text = getLearningProgressEmoji(progress: learningProgress) + " " + learningProgress
+//            progress.setTitle(utilities.getLearningProgressEmoji(progress: learningProgress) + " " + learningProgress, for: .normal)
+
+//            print(highPriority.code.title, learningProgress)
         }
     }
 
@@ -28,6 +48,8 @@ class HighPriorityTableViewCell: UITableViewCell {
         contentView.addSubview(container)
         container.addSubview(title)
         container.addSubview(progress)
+        
+        
         
         container.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
@@ -63,10 +85,12 @@ class HighPriorityTableViewCell: UITableViewCell {
                 
         title.font = UIFont.systemFont(ofSize: 16)
         
-        progress.font = UIFont.systemFont(ofSize: 14)
-        progress.textColor = UIColor(named: "uicolor")
+        progress.setTitleColor(UIColor(named: "uicolor"), for: .normal)
+        progress.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        progress.addTarget(self, action: #selector(learningTapped), for: .touchUpInside)
         
         self.contentView.backgroundColor = UIColor(named: "bgColor")
+        
     }
     
     required init?(coder: NSCoder) {
@@ -78,24 +102,11 @@ class HighPriorityTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-}
-
-private func getLearningProgressEmoji(progress: String) -> String {
-    let emojiConstant = Constant.LearningProgressEmoji()
     
-    switch progress {
-    case "Not Started":
-        return emojiConstant.notStarted
-    case "Beginning":
-        return emojiConstant.beginning
-    case "Progressing":
-        return emojiConstant.progressing
-    case "Proficient":
-        return emojiConstant.proficient
-    case "Examplary":
-        return emojiConstant.examplary
-    default:
-        return emojiConstant.notStarted
+    @objc func learningTapped() {
+        guard let highPriority = highPriority else { return }
+        delegate?.didTapLearning(with: highPriority)
     }
+
 }
+

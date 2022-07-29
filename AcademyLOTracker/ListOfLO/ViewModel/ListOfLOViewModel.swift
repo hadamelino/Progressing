@@ -14,8 +14,8 @@ class ListOfLOViewModel {
     let databaseID = Constant.DatabaseID()
     
     func fetchLO(for databaseID: String) -> Observable<[LearningObjective]> {
-        return client.request(endpoint: .queryDatabase(databaseID: databaseID), method: .post, expecting: ModelManager.Handler.Learning.self).map { learning in
-            return learning.results
+        return client.request(endpoint: .queryDatabase(databaseID: databaseID), method: .post, expecting: ModelManager.Handler.Learning.self).map { handler in
+            return handler.results
         }
     }
     

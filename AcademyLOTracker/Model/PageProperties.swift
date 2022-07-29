@@ -20,6 +20,7 @@ enum PageProperties {
         case objective = "Objective"
         case goalShortName = "Goal Short Name"
         case electiveKeywords = "Elective Keywords"
+        case learningProgress = "Learning Progress"
     }
 
 } 

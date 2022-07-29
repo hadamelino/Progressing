@@ -14,6 +14,7 @@ enum API {
         enum Endpoint {
             case queryDatabase(databaseID: String)
             case updatePageProperty(pageID: String)
+            case createPage
             
             var url: URL {
                 var components = URLComponents()
@@ -24,6 +25,8 @@ enum API {
                     components.path = "/v1/databases/\(databaseID)/query"
                 case .updatePageProperty(let pageID):
                     components.path = "/v1/pages/\(pageID)"
+                case .createPage:
+                    components.path = "/v1/pages"
                 }
                 return components.url!
             }

@@ -11,43 +11,58 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
+protocol ProgressViewDelegate {
+    func updateCellLabel(with learningProgress: String)
+}
+
 class ProgressViewController: UIViewController {
     
-    lazy var tableView = UITableView()
+    lazy var tableView = UITableView(frame: .zero, style: .grouped)
     
     let databaseID = Constant.DatabaseID()
     let viewModel = ProgressViewModel()
     let bag = DisposeBag()
+    var delegate: ProgressViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
         bind()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        //viewModel.fetch()
-    }
-    
-    private func bind() {
-
-        viewModel.sections.bind(to: tableView.rx.items(dataSource: ProgressDataSource.dataSource())).disposed(by: bag)
         viewModel.fetch()
+    }
+
+    private func bind() {
         
+        viewModel.sections.bind(to: tableView.rx.items(dataSource: ProgressDataSource.dataSource(vc: self))).disposed(by: bag)
+    
+//        tableView.setEditing(true, animated: true)
         tableView.rx.modelSelected(ProgressTableViewItem.self).subscribe { item in
             switch item.element {
             case .iosPathProgressItem(path: let path):
                 let nextVC = ListOfLOViewController()
                 nextVC.pathName = path.name.title ?? "Role"
                 self.navigationController?.pushViewController(nextVC, animated: true)
-            case .highPriorityItem(high: let high):
-                print("high")
+            case .highPriorityItem(high: let _):
+                return
             case .none:
                 return
             }
         }.disposed(by: bag)
-
+        
+//        viewModel.sections.subscribe { sectionsObserved in
+//            let initialState = SectionedTableViewState(sections: sectionsObserved.element ?? [])
+//            let deleteCommand = self.tableView.rx.itemDeleted.asObservable().map(TableViewEditingCommand.DeleteItem)
+//            deleteCommand.scan(initialState) { (state: SectionedTableViewState, command: TableViewEditingCommand) -> SectionedTableViewState in
+//                return state.execute(command: command)
+//            }.startWith(initialState)
+//            .map {
+//                $0.sections
+//            }
+//            .share(replay: 1)
+//            .bind(to: self.tableView.rx.items(dataSource: ProgressDataSource.dataSource()))
+//            .disposed(by: self.bag)
+//        }
+     
     }
     
     private func setupUI() {
@@ -66,6 +81,7 @@ class ProgressViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor(named: "bgColor")
         tableView.rx.setDelegate(self).disposed(by: bag)
+        
 
         tableView.snp.makeConstraints { (make) in
             make.left.equalTo(view.safeAreaLayoutGuide)
@@ -74,6 +90,7 @@ class ProgressViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         tableView.register(iOSProgressTableViewCell.self, forCellReuseIdentifier: iOSProgressTableViewCell.identifier)
+        tableView.register(HighPriorityTableViewCell.self, forCellReuseIdentifier: HighPriorityTableViewCell.identifier)
     }
 }
 
@@ -81,18 +98,61 @@ extension ProgressViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let myLabel = UILabel()
-        myLabel.frame = CGRect(x: 10, y: 3, width: 320, height: 20)
         myLabel.font = UIFont.boldSystemFont(ofSize: 18)
         let headerView = UIView()
-        headerView.addSubview(myLabel)
 
         if section == 0 {
+            myLabel.frame = CGRect(x: 15, y: 20, width: 320, height: 20)
             myLabel.text = "Academy Progress"
         }
         else {
+            myLabel.frame = CGRect(x: 15, y: 0, width: 320, height: 20)
             myLabel.text = "High Priority LO"
         }
+        headerView.addSubview(myLabel)
+
         return headerView
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 50
+        } else {
+            return 30
+        }
+    }
 }
+
+extension ProgressViewController: HighPriorityLODelegate {
+    
+    func didTapLearning(with highPriority: LearningObjective) {
+        let optionMenu = UIAlertController(title: highPriority.code.title ?? "", message: highPriority.goal.select, preferredStyle: .actionSheet)
+        optionMenu.view.tintColor = UIColor(named: "uicolor")
+        let exposedAction = UIAlertAction(title: "Exposed", style: .default) { alert in
+//            self.viewModel.patchLearningProgress(with: alert.title ?? "", pageID: highPriority.id)
+            self.viewModel.updateLearningProgress(loToUpdate: highPriority, progress: "Beginning")
+        }
+        let withHelpAction = UIAlertAction(title: "Can Implement with Help", style: .default) { alert in
+            self.viewModel.patchLearningProgress(with: alert.title ?? "", pageID: highPriority.id)
+        }
+        let withoutHelpAction = UIAlertAction(title: "Can Implement without Help", style: .default) { alert in
+            self.viewModel.patchLearningProgress(with: alert.title ?? "", pageID: highPriority.id)
+        }
+        let teachLessonAction = UIAlertAction(title: "Teach Lessons to Peers", style: .default) { alert in
+            self.viewModel.patchLearningProgress(with: alert.title ?? "", pageID: highPriority.id)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        optionMenu.addAction(exposedAction)
+        optionMenu.addAction(withHelpAction)
+        optionMenu.addAction(withoutHelpAction)
+        optionMenu.addAction(teachLessonAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true)
+    }
+    
+}
+
+
 

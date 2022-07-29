@@ -7,69 +7,62 @@
 
 import Foundation
 import RxDataSources
+import RxSwift
+import RxCocoa
+import UIKit
 
 struct ProgressDataSource {
-    typealias DataSource = RxTableViewSectionedReloadDataSource
+    typealias DataSource = RxTableViewSectionedAnimatedDataSource
     
-    static func dataSource() -> DataSource<ProgressTableViewSection> {
-        return .init { dataSource, tableView, indexPath, items -> UITableViewCell in
-            switch dataSource[indexPath] {
-            case .iosPathProgressItem(path: let pathProgress):
-                let cell = iOSProgressTableViewCell()
-                cell.pathProgress = pathProgress
+    static func dataSource(vc: ProgressViewController) -> DataSource<ProgressTableViewSection> {
+        return RxTableViewSectionedAnimatedDataSource(animationConfiguration: AnimationConfiguration(insertAnimation: .fade,
+                                                                                                     reloadAnimation: .fade,
+                                                                                                     deleteAnimation: .left))
+        { dataSource, table, index, item -> UITableViewCell in
+            switch dataSource[index] {
+            case .iosPathProgressItem(path: let path):
+                let cell = table.dequeueReusableCell(withIdentifier: iOSProgressTableViewCell.identifier, for: index) as! iOSProgressTableViewCell
+                cell.pathProgress = path
                 return cell
-            case .highPriorityItem(high: let learningObjective):
-                print(learningObjective)
-                let cell = HighPriorityTableViewCell()
-                cell.highPriority = learningObjective
+            case .highPriorityItem(high: let learning):
+                let cell = table.dequeueReusableCell(withIdentifier: HighPriorityTableViewCell.identifier, for: index) as! HighPriorityTableViewCell
+                cell.highPriority = learning
+                cell.delegate = vc
                 return cell
             }
         } titleForHeaderInSection: { dataSource, index in
-            return dataSource.sectionModels[index].header
+            return dataSource.sectionModels[index].identity
+        }  canEditRowAtIndexPath: { _, _ in
+            return true
+            }
         }
+    }
 
+
+
+enum TableViewEditingCommand {
+    case DeleteItem(IndexPath)
+}
+
+struct SectionedTableViewState {
+    var sections: [ProgressTableViewSection]
+    
+    init(sections: [ProgressTableViewSection]) {
+        self.sections = sections
+    }
+
+    func execute(command: TableViewEditingCommand) -> SectionedTableViewState {
+        switch command {
+        case .DeleteItem(let indexPath):
+            var sections = self.sections
+            var items = sections[indexPath.section].items
+            items.remove(at: indexPath.row)
+            sections[indexPath.section] = ProgressTableViewSection(original: sections[indexPath.section], items: items)
+            return SectionedTableViewState(sections: sections)
+        }
     }
 }
 
-enum ProgressTableViewItem {
-    case iosPathProgressItem(path: PathProgress)
-    case highPriorityItem(high: LearningObjective)
-}
 
-enum ProgressTableViewSection {
-    case iosPathSection(items: [ProgressTableViewItem])
-    case highPrioritySection(items: [ProgressTableViewItem])
-}
 
-extension ProgressTableViewSection: SectionModelType {
-    
-    typealias Item = ProgressTableViewItem
-    
-    var header: String {
-        switch self {
-        case .iosPathSection:
-            return "Academy Progress"
-        case .highPrioritySection:
-            return "High Priority LO"
-        }
-    }
-    
-    var items: [Item] {
-        switch self {
-        case .iosPathSection(items: let items):
-            return items
-        case .highPrioritySection(items: let items):
-            return items
-        }
-    }
-    
-    init(original: ProgressTableViewSection, items: [Item]) {
-        switch original {
-        case .iosPathSection(let items):
-            self = .iosPathSection(items: items)
-        case .highPrioritySection(let items):
-            self = .highPrioritySection(items: items)
-        }
-    }
-    
-}
+

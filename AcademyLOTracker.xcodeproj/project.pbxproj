@@ -32,6 +32,8 @@
 		C43A432D28910A1300009589 /* ListOfLOViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A432C28910A1300009589 /* ListOfLOViewModel.swift */; };
 		C43A433128910C9500009589 /* LearningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A433028910C9500009589 /* LearningTableViewCell.swift */; };
 		C43A4334289124AF00009589 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A4333289124AF00009589 /* DetailViewController.swift */; };
+		C4B26DA92891DCC3000FD885 /* ProgressTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B26DA82891DCC3000FD885 /* ProgressTableViewSection.swift */; };
+		C4B26DAE28923F98000FD885 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B26DAD28923F98000FD885 /* Utilities.swift */; };
 		C4EDA81D28916B9C00DADCF7 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EDA81C28916B9C00DADCF7 /* DetailViewModel.swift */; };
 		CC30531FCA4E443026964F41 /* Pods_AcademyLOTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C80A6B82AB074DA6616E18 /* Pods_AcademyLOTracker.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +87,8 @@
 		C43A432C28910A1300009589 /* ListOfLOViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfLOViewModel.swift; sourceTree = "<group>"; };
 		C43A433028910C9500009589 /* LearningTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningTableViewCell.swift; sourceTree = "<group>"; };
 		C43A4333289124AF00009589 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C4B26DA82891DCC3000FD885 /* ProgressTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewSection.swift; sourceTree = "<group>"; };
+		C4B26DAD28923F98000FD885 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C4EDA81C28916B9C00DADCF7 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		CD5A93A6D5CB40A51D621678 /* Pods-AcademyLOTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AcademyLOTracker.release.xcconfig"; path = "Target Support Files/Pods-AcademyLOTracker/Pods-AcademyLOTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +161,7 @@
 		C43A42B7288A87F500009589 /* AcademyLOTracker */ = {
 			isa = PBXGroup;
 			children = (
+				C4B26DAC28923F8B000FD885 /* Utilities */,
 				C43A42F6288AA1BF00009589 /* Constant */,
 				C43A42F1288A9AD600009589 /* API */,
 				C43A42F0288A971100009589 /* Model */,
@@ -205,6 +210,7 @@
 			children = (
 				C43A42EE288A966A00009589 /* ProgressViewModel.swift */,
 				C43A4324288F7F9A00009589 /* ProgressDataSource.swift */,
+				C4B26DA82891DCC3000FD885 /* ProgressTableViewSection.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -288,6 +294,14 @@
 				C4EDA81E28916BA000DADCF7 /* ViewModel */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		C4B26DAC28923F8B000FD885 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C4B26DAD28923F98000FD885 /* Utilities.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		C4EDA81E28916BA000DADCF7 /* ViewModel */ = {
@@ -486,11 +500,13 @@
 				C43A4308288C01DC00009589 /* iOSProgressTableViewCell.swift in Sources */,
 				C43A42BD288A87F500009589 /* ProgressViewController.swift in Sources */,
 				C43A42B9288A87F500009589 /* AppDelegate.swift in Sources */,
+				C4B26DA92891DCC3000FD885 /* ProgressTableViewSection.swift in Sources */,
 				C43A433128910C9500009589 /* LearningTableViewCell.swift in Sources */,
 				C43A4334289124AF00009589 /* DetailViewController.swift in Sources */,
 				C43A42F3288A9AE300009589 /* API.swift in Sources */,
 				C43A42FE288AFD2300009589 /* APIClient.swift in Sources */,
 				C43A4302288BC26400009589 /* LearningObjective.swift in Sources */,
+				C4B26DAE28923F98000FD885 /* Utilities.swift in Sources */,
 				C43A42EF288A966A00009589 /* ProgressViewModel.swift in Sources */,
 				C43A4306288BC42C00009589 /* Property.swift in Sources */,
 				C43A4300288BC24400009589 /* PathProgress.swift in Sources */,
@@ -677,6 +693,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -705,6 +722,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

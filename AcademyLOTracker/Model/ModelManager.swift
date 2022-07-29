@@ -36,28 +36,31 @@ struct ModelManager: Codable {
                 var LOArray = [LearningObjective]()
                 let container = try decoder.container(keyedBy: Keys.CodingKeys.self)
                 var resultsRaw = try container.nestedUnkeyedContainer(forKey: .results)
-            
+                
                 while !resultsRaw.isAtEnd {
-                    let propertiyObject = try resultsRaw.nestedContainer(keyedBy: Keys.ResultsKeys.self)
-                    LOArray.append(try propertiyObject.decode(LearningObjective.self, forKey: .properties))
+                    LOArray.append(try resultsRaw.decode(LearningObjective.self))
+//                    let propertiyObject = try resultsRaw.nestedContainer(keyedBy: Keys.ResultsKeys.self)
+//                    let id = try propertiyObject.decode(String.self, forKey: .id)
+//                    LOArray.append(try propertiyObject.decode(LearningObjective.self, forKey: .properties))
                 }
                 self.results = LOArray
-                
             }
             
         }
     }
+}
+
+enum Keys {
+    enum CodingKeys: String, CodingKey {
+        case object, results
+    }
     
-    enum Keys {
-        enum CodingKeys: String, CodingKey {
-            case object, results
-        }
-        
-        enum ResultsKeys: String, CodingKey {
-            case properties
-        }
+    enum ResultsKeys: String, CodingKey {
+        case properties
+        case id
     }
 }
+
 
 
 
