@@ -23,26 +23,36 @@ class ListOfLOViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let databaseID = viewModel.getDatabaseID(from: pathName)
+        viewModel.fetchLO(for: databaseID)
         setupUI()
+        setupTextField()
         bind()
     }
     
     private func bind() {
-        let databaseID = viewModel.getDatabaseID(from: pathName)
-        
-        viewModel.fetchLO(for: databaseID).bind(to: tableView.rx.items(cellIdentifier: LearningTableViewCell.identifier, cellType: LearningTableViewCell.self)) {
-            index, model, cell in
-            cell.learningObjective = model
-        }.disposed(by: bag)
-        
+                
         tableView.rx.modelSelected(LearningObjective.self).subscribe { learning in
             let nextVC = DetailViewController()
             nextVC.learningObjective = learning.element
             self.navigationController?.pushViewController(nextVC, animated: true)
-        }.disposed(by: bag)  
+        }.disposed(by: bag)
+        
+        let searchResults = searchBar.rx.text.orEmpty
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .flatMapLatest { term -> Observable<[LearningObjective]> in
+                if term.isEmpty {
+                    return self.viewModel.fetchedLO
+                } else {
+                    return self.viewModel.searchLearningObjective(term: term)
+                }
+            }.bind(to: tableView.rx.items(cellIdentifier: LearningTableViewCell.identifier, cellType: LearningTableViewCell.self)) {
+                index, model, cell in
+                cell.learningObjective = model
+            }.disposed(by: bag)
     }
-    
-    
+     
     private func setupUI() {
         view.addSubview(tableView)
         view.addSubview(searchBar)
@@ -68,6 +78,17 @@ class ListOfLOViewController: UIViewController {
         tableView.register(LearningTableViewCell.self, forCellReuseIdentifier: LearningTableViewCell.identifier)
         searchBar.placeholder = "Code, Objective, Keywords…"
     }
-
-
+    
+    private func setupTextField() {
+        let toolbar = UIToolbar()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        toolbar.setItems([doneButton], animated: true)
+        toolbar.sizeToFit()
+        searchBar.inputAccessoryView = toolbar
+    }
+    
+    @objc func doneButtonTapped(){
+        searchBar.resignFirstResponder()
+    }
 }
+

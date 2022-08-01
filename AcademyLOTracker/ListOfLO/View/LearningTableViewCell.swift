@@ -37,7 +37,7 @@ class LearningTableViewCell: UITableViewCell {
             make.top.equalToSuperview().offset(5)
             make.right.equalToSuperview().offset(-5)
             make.bottom.equalToSuperview().offset(-5)
-            make.height.equalTo(53)
+            make.height.equalTo(60)
         }
         
         title.snp.makeConstraints { make in

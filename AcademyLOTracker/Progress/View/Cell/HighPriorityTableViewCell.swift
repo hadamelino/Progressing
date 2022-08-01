@@ -26,20 +26,9 @@ class HighPriorityTableViewCell: UITableViewCell {
     var highPriority: LearningObjective? {
         didSet {
             guard let highPriority = highPriority else { return }
-            
-            Observable.just(highPriority)
-                .map { lo in
-                    let learningProgress = lo.learningProgress.richText ?? ""
-                    print(learningProgress)
-                    return self.utilities.getLearningProgressEmoji(progress: learningProgress) + " " + learningProgress
-                }.bind(to: progress.rx.title())
-                .disposed(by: bag)
-            
-//            let learningProgress = highPriority.learningProgress.richText ?? ""
+            let learningProgress = highPriority.learningProgress.richText ?? ""
             title.text = highPriority.code.title
-//            progress.setTitle(utilities.getLearningProgressEmoji(progress: learningProgress) + " " + learningProgress, for: .normal)
-
-//            print(highPriority.code.title, learningProgress)
+            progress.setTitle(utilities.getLearningProgressEmoji(progress: learningProgress) + " " + learningProgress, for: .normal)
         }
     }
 
@@ -48,9 +37,7 @@ class HighPriorityTableViewCell: UITableViewCell {
         contentView.addSubview(container)
         container.addSubview(title)
         container.addSubview(progress)
-        
-        
-        
+         
         container.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(5)

@@ -13,7 +13,7 @@ import UIKit
 
 struct ProgressDataSource {
     typealias DataSource = RxTableViewSectionedAnimatedDataSource
-    
+
     static func dataSource(vc: ProgressViewController) -> DataSource<ProgressTableViewSection> {
         return RxTableViewSectionedAnimatedDataSource(animationConfiguration: AnimationConfiguration(insertAnimation: .fade,
                                                                                                      reloadAnimation: .fade,
@@ -59,6 +59,7 @@ struct SectionedTableViewState {
             items.remove(at: indexPath.row)
             sections[indexPath.section] = ProgressTableViewSection(original: sections[indexPath.section], items: items)
             return SectionedTableViewState(sections: sections)
+            
         }
     }
 }

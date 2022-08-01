@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct LearningObjective: Codable {
+struct LearningObjective: Codable, Equatable {
     var id: String
     var code: Property.Types.Title
     var objective: Property.Types.RichText

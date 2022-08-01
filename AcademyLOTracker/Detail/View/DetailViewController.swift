@@ -130,10 +130,10 @@ class DetailViewController: UIViewController {
         copySymbol.backgroundColor = .white
         copySymbol.contentMode = .scaleAspectFit
         copySymbol.tintColor = UIColor(named: "uicolor")
+        copySymbol.addTarget(self, action: #selector(copyButtonPressed), for: .touchUpInside)
         addButton.setTitle("Add to High Priority LO", for: .normal)
         addButton.backgroundColor = UIColor(named: "uicolor")
         addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
-    
     }
     
     @objc func addButtonPressed() {
@@ -141,6 +141,46 @@ class DetailViewController: UIViewController {
         viewModel.postLearningObjective(lo: learningObjective)
         let progressVC = navigationController?.viewControllers.first as! ProgressViewController
         progressVC.viewModel.appendHighPriorityLO(loToAppend: learningObjective)
+    }
+    
+    @objc func copyButtonPressed() {
+        UIPasteboard.general.string = learningObjective?.electiveKeywords.richText
+        showOverlay()
+    }
+    
+    private func showOverlay() {
+        let overlay = UIView()
+        let label = UILabel()
+        
+        overlay.addSubview(label)
+        view.addSubview(overlay)
+        
+        overlay.backgroundColor = .systemGray6
+        overlay.layer.cornerRadius = 8
+        
+        label.text = "Copied to Clipboard"
+        label.font = UIFont.systemFont(ofSize: 14)
+        
+        label.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(-10)
+        }
+        
+        overlay.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(keywordsValue.snp.bottom).offset(40)
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 2, options: .curveEaseIn) {
+            overlay.alpha = 0
+            label.alpha = 0
+        } completion: { complete in
+            overlay.removeFromSuperview()
+        }
+
+        
     }
     
     private func makeShadow(view: UIView) {

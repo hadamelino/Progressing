@@ -33,36 +33,19 @@ class ProgressViewController: UIViewController {
 
     private func bind() {
         
-        viewModel.sections.bind(to: tableView.rx.items(dataSource: ProgressDataSource.dataSource(vc: self))).disposed(by: bag)
-    
-//        tableView.setEditing(true, animated: true)
+        viewModel.sections.asObservable().bind(to: tableView.rx.items(dataSource: ProgressDataSource.dataSource(vc: self))).disposed(by: bag)
         tableView.rx.modelSelected(ProgressTableViewItem.self).subscribe { item in
             switch item.element {
             case .iosPathProgressItem(path: let path):
                 let nextVC = ListOfLOViewController()
                 nextVC.pathName = path.name.title ?? "Role"
                 self.navigationController?.pushViewController(nextVC, animated: true)
-            case .highPriorityItem(high: let _):
+            case .highPriorityItem(high: _):
                 return
             case .none:
                 return
             }
         }.disposed(by: bag)
-        
-//        viewModel.sections.subscribe { sectionsObserved in
-//            let initialState = SectionedTableViewState(sections: sectionsObserved.element ?? [])
-//            let deleteCommand = self.tableView.rx.itemDeleted.asObservable().map(TableViewEditingCommand.DeleteItem)
-//            deleteCommand.scan(initialState) { (state: SectionedTableViewState, command: TableViewEditingCommand) -> SectionedTableViewState in
-//                return state.execute(command: command)
-//            }.startWith(initialState)
-//            .map {
-//                $0.sections
-//            }
-//            .share(replay: 1)
-//            .bind(to: self.tableView.rx.items(dataSource: ProgressDataSource.dataSource()))
-//            .disposed(by: self.bag)
-//        }
-     
     }
     
     private func setupUI() {
@@ -81,8 +64,7 @@ class ProgressViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor(named: "bgColor")
         tableView.rx.setDelegate(self).disposed(by: bag)
-        
-
+    
         tableView.snp.makeConstraints { (make) in
             make.left.equalTo(view.safeAreaLayoutGuide)
             make.right.equalTo(view.safeAreaLayoutGuide)
@@ -129,17 +111,20 @@ extension ProgressViewController: HighPriorityLODelegate {
         let optionMenu = UIAlertController(title: highPriority.code.title ?? "", message: highPriority.goal.select, preferredStyle: .actionSheet)
         optionMenu.view.tintColor = UIColor(named: "uicolor")
         let exposedAction = UIAlertAction(title: "Exposed", style: .default) { alert in
-//            self.viewModel.patchLearningProgress(with: alert.title ?? "", pageID: highPriority.id)
-            self.viewModel.updateLearningProgress(loToUpdate: highPriority, progress: "Beginning")
+            self.viewModel.patchLearningProgress(with: alert.title ?? "", pageID: highPriority.id)
+            self.viewModel.updateLearningProgress(loToUpdate: highPriority, progress: alert.title!)
         }
         let withHelpAction = UIAlertAction(title: "Can Implement with Help", style: .default) { alert in
             self.viewModel.patchLearningProgress(with: alert.title ?? "", pageID: highPriority.id)
+            self.viewModel.updateLearningProgress(loToUpdate: highPriority, progress: alert.title!)
         }
         let withoutHelpAction = UIAlertAction(title: "Can Implement without Help", style: .default) { alert in
             self.viewModel.patchLearningProgress(with: alert.title ?? "", pageID: highPriority.id)
+            self.viewModel.updateLearningProgress(loToUpdate: highPriority, progress: alert.title!)
         }
         let teachLessonAction = UIAlertAction(title: "Teach Lessons to Peers", style: .default) { alert in
             self.viewModel.patchLearningProgress(with: alert.title ?? "", pageID: highPriority.id)
+            self.viewModel.updateLearningProgress(loToUpdate: highPriority, progress: alert.title!)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         

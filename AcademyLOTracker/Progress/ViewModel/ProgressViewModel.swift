@@ -14,9 +14,8 @@ class ProgressViewModel {
         
     let client = API.Client()
     let databaseID = Constant.DatabaseID()
-//    var sections = PublishSubject<[ProgressTableViewSection]>()
+    let utilities = Utilities()
     let sections = BehaviorRelay(value: [ProgressTableViewSection]())
-    
     let bag = DisposeBag()
     
     func fetch() {
@@ -36,7 +35,7 @@ class ProgressViewModel {
                 let learnItem = ProgressTableViewItem.highPriorityItem(high: learn)
                 return learnItem
             }
-            
+
             section.append(.iosPathSection(items: pathSection))
             section.append(.highPrioritySection(items: learnSection))
             self.sections.accept(section)
@@ -68,15 +67,14 @@ class ProgressViewModel {
         guard var highPrioritySection = sections.value.last else { return }
         var highPriorityItems = highPrioritySection.items
         guard let itemIndex = highPriorityItems.firstIndex(of: .highPriorityItem(high: loToUpdate)) else { return }
-        var selectedLO = loToUpdate
-        selectedLO.learningProgress.richText = progress
-        print(itemIndex, selectedLO.learningProgress.richText)
-        highPriorityItems.insert(.highPriorityItem(high: selectedLO), at: itemIndex)
-        highPriorityItems.remove(at: itemIndex + 1)
-        highPrioritySection = .highPrioritySection(items: highPriorityItems)
         
+        var selectedLO = loToUpdate
+        selectedLO.learningProgress.richText = utilities.getLearningProgressText(checkBoxName: progress)
+        highPriorityItems[itemIndex] = .highPriorityItem(high: selectedLO)
+        highPrioritySection = .highPrioritySection(items: highPriorityItems)
         updatedSection.append(pathSection)
         updatedSection.append(highPrioritySection)
+        
         sections.accept(updatedSection)
     }
     

@@ -7,7 +7,7 @@
 
 import Foundation
     
-struct PathProgress: Codable {
+struct PathProgress: Codable, Equatable {
     let name: Property.Types.Title
     let finishedlo: Property.Types.RichText
     let totallo: Property.Types.RichText
