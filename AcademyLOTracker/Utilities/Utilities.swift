@@ -41,4 +41,9 @@ struct Utilities {
             return "Not Started"
         }
     }
+    
+    func getApiKey() -> String {
+        guard let value = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else {return ""}
+        return value
+    }
 }

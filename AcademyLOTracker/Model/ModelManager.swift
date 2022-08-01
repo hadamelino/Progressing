@@ -39,14 +39,13 @@ struct ModelManager: Codable {
                 
                 while !resultsRaw.isAtEnd {
                     LOArray.append(try resultsRaw.decode(LearningObjective.self))
-//                    let propertiyObject = try resultsRaw.nestedContainer(keyedBy: Keys.ResultsKeys.self)
-//                    let id = try propertiyObject.decode(String.self, forKey: .id)
-//                    LOArray.append(try propertiyObject.decode(LearningObjective.self, forKey: .properties))
                 }
                 self.results = LOArray
             }
             
         }
+        
+        struct AnyCodable: Codable {}
     }
 }
 

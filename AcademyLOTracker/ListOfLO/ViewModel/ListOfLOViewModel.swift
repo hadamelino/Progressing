@@ -17,10 +17,9 @@ class ListOfLOViewModel {
     let bag = DisposeBag()
     
     func fetchLO(for databaseID: String) {
-        fetchedLO = client.request(endpoint: .queryDatabase(databaseID: databaseID), method: .post, expecting: ModelManager.Handler.Learning.self).map { handler in
+        fetchedLO = client.request(endpoint: .queryDatabase(databaseID: databaseID), method: .POST, expecting: ModelManager.Handler.Learning.self).map { handler in
             return handler.results
         }
-
     }
     
     func searchLearningObjective(term: String) -> Observable<[LearningObjective]> {

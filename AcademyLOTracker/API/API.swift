@@ -39,8 +39,8 @@ enum API {
         }
         
         enum Method: String {
-            case post
-            case update
+            case POST
+            case PATCH
         }
         
         enum CustomError: Error {

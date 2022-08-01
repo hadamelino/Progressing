@@ -6,38 +6,18 @@
 //
 
 import Foundation
-import SwiftyJSON
+import RxSwift
 
 class DetailViewModel {
     
     let highPriorityLODatabase = Constant.DatabaseID().highPriorityLO
+    let client = API.Client()
+    let bag = DisposeBag()
     
     func postLearningObjective(lo: LearningObjective) {
-        let headers = [
-            "Accept": "application/json",
-            "Notion-Version": "2022-02-22",
-            "Content-Type": "application/json",
-            "Authorization": "secret_EOlEjtZ4Mkj330icjACrLhGfZcNx0kUQcmQxf8Rc3rI"
-        ]
-
-        let parameters = createPropertyJSON(object: lo)
-        
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api.notion.com/v1/pages/")! as URL,
-                                          cachePolicy: .useProtocolCachePolicy,
-                                          timeoutInterval: 10.0)
-        request.httpMethod = "POST"
-        request.allHTTPHeaderFields = headers
-        request.httpBody = Data(parameters.utf8)
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            if (error != nil) {
-                print(error as Any)
-            } else {
-                let httpResponse = response as? HTTPURLResponse
-                print(httpResponse?.statusCode as Any)
-            }
-        })
-        dataTask.resume()
+        let jsonData = createPropertyJSON(object: lo)
+        let body = Data(jsonData.utf8)
+        let _ = client.request(endpoint: .createPage, method: .POST, expecting: ModelManager.Handler.AnyCodable.self, body: body).subscribe { _ in }.disposed(by: bag)
     }
     
     private func createPropertyJSON(object: LearningObjective) -> String {
